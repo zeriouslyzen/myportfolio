@@ -1269,8 +1269,13 @@
             // Generate the ancient words network
             generateAncientWordsNetwork();
             
-            // Activate the default zone
-            document.querySelector('#zone-deck').classList.add('active');
+            // Activate the default zone - FIXED
+            const deckZone = document.querySelector('#zone-deck');
+            const deckNav = document.querySelector('#nav-deck');
+            if (deckZone && deckNav) {
+                deckZone.classList.add('active');
+                deckNav.classList.add('active');
+            }
             
             // Initialize Field Manual
             const prevBtn = document.getElementById('prev-entry-btn');
