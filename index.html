@@ -1266,15 +1266,22 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             
+            console.log('DOM loaded - starting initialization');
+            
             // Generate the ancient words network
             generateAncientWordsNetwork();
             
             // Activate the default zone - FIXED
             const deckZone = document.querySelector('#zone-deck');
             const deckNav = document.querySelector('#nav-deck');
+            console.log('Deck zone found:', deckZone);
+            console.log('Deck nav found:', deckNav);
             if (deckZone && deckNav) {
                 deckZone.classList.add('active');
                 deckNav.classList.add('active');
+                console.log('Zones activated successfully');
+            } else {
+                console.log('ERROR: Could not find zone elements');
             }
             
             // Initialize Field Manual
