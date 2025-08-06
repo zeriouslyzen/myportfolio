@@ -1,34 +1,5 @@
 {
   "version": 2,
-  "name": "orbital-field-station",
-  "builds": [
-    {
-      "src": "OrbitalPort.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "robots.txt",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "sitemap.xml",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/OrbitalPort.html"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -66,15 +37,17 @@
   ],
   "rewrites": [
     {
-      "source": "/index.html",
-      "destination": "/OrbitalPort.html"
+      "source": "/",
+      "destination": "/index.html"
     }
   ],
-  "functions": {
-    "OrbitalPort.html": {
-      "maxDuration": 10
+  "redirects": [
+    {
+      "source": "/OrbitalPort.html",
+      "destination": "/",
+      "permanent": false
     }
-  },
+  ],
   "regions": ["iad1"],
   "github": {
     "silent": true
