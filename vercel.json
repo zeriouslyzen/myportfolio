@@ -38,14 +38,11 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/index.html"
-    }
-  ],
-  "redirects": [
+      "destination": "/OrbitalPort.html"
+    },
     {
-      "source": "/OrbitalPort.html",
-      "destination": "/",
-      "permanent": false
+      "source": "/index.html",
+      "destination": "/OrbitalPort.html"
     }
   ],
   "regions": ["iad1"],
