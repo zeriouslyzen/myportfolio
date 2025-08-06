@@ -1,29 +1,6 @@
 {
   "version": 2,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noai, noimageai, noarchive, nosnippet"
-        },
-        {
-          "key": "X-Copyright",
-          "value": "All content protected - No AI training permitted"
-        },
-        {
-          "key": "X-License",
-          "value": "All rights reserved - Contact signal@jackdanger.dev for permissions"
-        },
 
-        {
-          "key": "X-Robots-Tag",
-          "value": "noai, noimageai"
-        }
-      ]
-    }
-  ],
   "cleanUrls": true,
   "regions": ["iad1"],
   "github": {

@@ -5,11 +5,7 @@
 [build.environment]
   NODE_VERSION = "18"
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noai, noimageai"
-    X-Copyright = "Protected content"
+
 
 [[redirects]]
   from = "/OrbitalPort.html"
