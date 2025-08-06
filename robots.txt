@@ -1,0 +1,83 @@
+# Robots.txt - J. Danger Portfolio Protection
+# This site contains proprietary research, personal data, and copyrighted content
+# Unauthorized scraping, crawling, or data collection is prohibited
+
+User-agent: *
+Disallow: /
+
+# Specific AI/ML training bots - BLOCKED
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bard
+Disallow: /
+
+User-agent: Gemini
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# Data harvesting bots
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Allow legitimate search engines (but not for AI training)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 10
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 10
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 10
+
+# Copyright notice
+# This website and all its content are protected by copyright law.
+# Unauthorized reproduction, distribution, or use for AI training is prohibited.
+# Contact: signal@jackdanger.dev for licensing inquiries.

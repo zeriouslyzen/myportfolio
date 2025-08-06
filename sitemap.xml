@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- 
+    COPYRIGHT NOTICE: This sitemap and associated website content are protected by copyright law.
+    Unauthorized use for AI training, data mining, or commercial scraping is prohibited.
+    Contact: signal@jackdanger.dev for licensing inquiries.
+    -->
+    
+    <url>
+        <loc>https://jackdanger.dev/</loc>
+        <lastmod>2025-01-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+        
+        <!-- Explicit AI training exclusion -->
+        <xhtml:link rel="noai" href="https://jackdanger.dev/" />
+        <xhtml:link rel="noimageai" href="https://jackdanger.dev/" />
+    </url>
+    
+    <!-- Note: Only legitimate search engines should index this content -->
+    <!-- AI training bots are explicitly prohibited via robots.txt -->
+    
+</urlset>
