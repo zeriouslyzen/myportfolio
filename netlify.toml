@@ -1,0 +1,27 @@
+[build]
+  publish = "."
+  command = "echo 'No build required - static site'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noai, noimageai, noarchive, nosnippet"
+    X-Copyright = "All content protected - No AI training permitted"
+    X-License = "All rights reserved - Contact signal@jackdanger.dev for permissions"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Content-Security-Policy = "default-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data:; frame-ancestors 'none';"
+
+[[redirects]]
+  from = "/OrbitalPort.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio.html"
+  to = "/"
+  status = 301
