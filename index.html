@@ -1430,52 +1430,14 @@
             tooltip.classList.remove('show');
         }
 
-        // Anti-scraping and bot detection measures
-        function detectBots() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const botPatterns = [
-                'bot', 'crawler', 'spider', 'scraper', 'gpt', 'claude', 'bard', 
-                'chatgpt', 'anthropic', 'openai', 'perplexity', 'meta-external',
-                'bytespider', 'ccbot', 'facebookbot', 'google-extended'
-            ];
-            
-            return botPatterns.some(pattern => userAgent.includes(pattern));
-        }
-
-        function protectContent() {
-            // Disable right-click context menu
-            document.addEventListener('contextmenu', (e) => e.preventDefault());
-            
-            // Disable text selection for bots
-            if (detectBots()) {
-                document.body.style.userSelect = 'none';
-                document.body.style.webkitUserSelect = 'none';
-                document.body.style.mozUserSelect = 'none';
-                document.body.style.msUserSelect = 'none';
-            }
-            
-            // Disable common scraping shortcuts
-            document.addEventListener('keydown', (e) => {
-                // Disable Ctrl+A (select all), Ctrl+S (save), Ctrl+P (print)
-                if (e.ctrlKey && ['a', 's', 'p'].includes(e.key.toLowerCase())) {
-                    e.preventDefault();
-                }
-                // Disable F12 (dev tools)
-                if (e.key === 'F12') {
-                    e.preventDefault();
-                }
-            });
-            
-            // Add copyright watermark to console
-            console.log('%c⚠️ COPYRIGHT NOTICE ⚠️', 'color: red; font-size: 16px; font-weight: bold;');
-            console.log('%cThis content is protected by copyright law.', 'color: red; font-size: 12px;');
-            console.log('%cUnauthorized scraping, AI training, or data mining is prohibited.', 'color: red; font-size: 12px;');
-            console.log('%cContact signal@jackdanger.dev for licensing inquiries.', 'color: red; font-size: 12px;');
+        // Simple copyright notice
+        function addCopyrightNotice() {
+            console.log('%c© 2025 Orbital Field Station - All Rights Reserved', 'color: #B8735A; font-size: 12px;');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize protection measures
-            protectContent();
+            // Initialize simple copyright notice
+            addCopyrightNotice();
             
             // Generate the ancient words network
             generateAncientWordsNetwork();

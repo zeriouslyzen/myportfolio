@@ -23,3 +23,6 @@ Thumbs.db
 *.bak
 *.backup
 .vercel
+
+# Local Netlify folder
+.netlify

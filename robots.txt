@@ -1,9 +1,8 @@
-# Robots.txt - J. Danger Portfolio Protection
-# This site contains proprietary research, personal data, and copyrighted content
-# Unauthorized scraping, crawling, or data collection is prohibited
+# Robots.txt - J. Danger Portfolio
+# Basic AI protection
 
 User-agent: *
-Disallow: /
+Allow: /
 
 # Specific AI/ML training bots - BLOCKED
 User-agent: GPTBot
