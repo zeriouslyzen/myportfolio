@@ -9,7 +9,7 @@
     <meta name="description" content="J. Danger - Multidisciplinary AI Research Engineer & Systems Architect. Neural-symbolic architectures, model orchestration, sports medicine, martial arts instruction, cognitive anthropology, and embodied AI systems. Bridging ancient wisdom with cutting-edge technology.">
     <meta name="keywords" content="AI research engineer, machine learning, neural symbolic architectures, model orchestration, LoRA fine-tuning, distributed inference, cognitive systems, multimodal AI, sports medicine, martial arts instructor, cognitive anthropology, embodied AI, human performance optimization, Chinese medicine, medical chi gong, krav maga, shaolin kung fu, tai chi, meditation teacher, holistic health, biohacking, longevity research, consciousness studies, phenomenology, somatic intelligence, mind-body integration, traditional medicine, alternative healing, wellness technology, performance psychology, flow states, neuroplasticity, epigenetics, microbiome research, cold therapy, breathwork, mindfulness, contemplative science")
     <meta name="author" content="J. Danger">
-    <meta name="robots" content="index, follow, noai, noimageai">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://orbital-field-station.netlify.app/">
     
 
@@ -431,64 +431,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Copyright Indicator Styles */
-        .copyright-indicator {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .copyright-indicator:hover {
-            background: rgba(184, 115, 90, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .copyright-indicator:hover .animate-pulse {
-            animation-duration: 0.8s;
-        }
 
-        /* Copyright Modal Styles */
-        .copyright-modal {
-            backdrop-filter: blur(8px);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .copyright-modal-content {
-            animation: modalSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(184, 115, 90, 0.2);
-        }
-
-        @keyframes modalSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .copyright-modal-content h4 {
-            color: var(--indigo);
-        }
-
-        .copyright-modal-content .border-terracotta {
-            border-left-color: var(--terracotta);
-        }
-
-        .copyright-modal-content .border-botanical-green {
-            border-left-color: var(--botanical-green);
-        }
-
-        .copyright-modal-content .border-sky-blue {
-            border-left-color: var(--sky-blue);
-        }
 
         /* Email Modal Styles */
         .email-modal {
@@ -882,79 +825,12 @@
                 </button>
             </div>
             
-            <!-- Subtle Copyright Indicator -->
-            <div class="relative flex justify-center items-center mb-4">
-                <button id="copyright-trigger" class="copyright-indicator group">
-                    <div class="flex items-center space-x-2 opacity-30 hover:opacity-80 transition-all duration-500">
-                        <div class="w-2 h-2 bg-terracotta rounded-full animate-pulse"></div>
-                        <span class="mono-font text-xs tracking-wider">protected content</span>
-                        <div class="w-2 h-2 bg-terracotta rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
-                    </div>
-                </button>
-            </div>
+
             
             <p class="mono-font text-xs opacity-50">&copy; 2025 // ORBITAL FIELD STATION</p>
         </footer>
 
-        <!-- Copyright Protection Modal -->
-        <div id="copyright-modal" class="copyright-modal fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-            <div class="copyright-modal-content bg-gradient-to-br from-sandstone to-ivory rounded-xl p-8 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto shadow-2xl border border-ochre">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-3 h-3 bg-terracotta rounded-full animate-pulse"></div>
-                        <h3 class="text-xl font-bold ui-font text-indigo">Content Protection Protocol</h3>
-                        <div class="w-3 h-3 bg-terracotta rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
-                    </div>
-                    <button id="close-copyright-modal" class="text-gray-400 hover:text-gray-600 transition-colors text-2xl font-light">
-                        ×
-                    </button>
-                </div>
-                
-                <div class="space-y-6 text-gray-700">
-                    <div class="bg-white bg-opacity-50 rounded-lg p-4 border-l-4 border-terracotta">
-                        <h4 class="font-semibold text-indigo mb-2">🛡️ Intellectual Property Notice</h4>
-                        <p class="text-sm leading-relaxed">
-                            All content within this Orbital Field Station represents proprietary research, methodologies, 
-                            and intellectual innovations developed through years of multidisciplinary study. This includes 
-                            technical architectures, training protocols, philosophical frameworks, and experiential knowledge.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white bg-opacity-50 rounded-lg p-4 border-l-4 border-botanical-green">
-                        <h4 class="font-semibold text-indigo mb-2">🚫 Prohibited Applications</h4>
-                        <ul class="text-sm space-y-1 leading-relaxed">
-                            <li>• AI model training or fine-tuning</li>
-                            <li>• Machine learning dataset compilation</li>
-                            <li>• Automated data mining or scraping</li>
-                            <li>• Commercial reproduction without authorization</li>
-                            <li>• Integration into training corpora</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-white bg-opacity-50 rounded-lg p-4 border-l-4 border-sky-blue">
-                        <h4 class="font-semibold text-indigo mb-2">🤝 Collaboration & Licensing</h4>
-                        <p class="text-sm leading-relaxed mb-3">
-                            Interested in collaboration, research partnerships, or licensing this work? 
-                            I'm open to meaningful connections that advance the field while respecting intellectual boundaries.
-                        </p>
-                        <a href="mailto:signal@jackdanger.dev" 
-                           class="inline-flex items-center px-4 py-2 bg-terracotta text-white rounded-lg hover:bg-opacity-80 transition-all duration-300 text-sm font-medium">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                            Initiate Contact Protocol
-                        </a>
-                    </div>
-                    
-                    <div class="text-center pt-4 border-t border-ochre">
-                        <p class="mono-font text-xs text-gray-500">
-                            This station operates under comprehensive protection protocols.<br>
-                            Respect for intellectual sovereignty is fundamental to the research mission.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Email Log Modal -->
         <div id="email-modal" class="email-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
@@ -1042,45 +918,7 @@
             cardElement.classList.toggle('open');
         }
 
-        // Copyright Modal Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const copyrightTrigger = document.getElementById('copyright-trigger');
-            const copyrightModal = document.getElementById('copyright-modal');
-            const closeCopyrightModal = document.getElementById('close-copyright-modal');
-
-            if (copyrightTrigger) {
-                copyrightTrigger.addEventListener('click', function() {
-                    copyrightModal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-
-            if (closeCopyrightModal) {
-                closeCopyrightModal.addEventListener('click', function() {
-                    copyrightModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                });
-            }
-
-            // Close modal when clicking outside
-            if (copyrightModal) {
-                copyrightModal.addEventListener('click', function(e) {
-                    if (e.target === copyrightModal) {
-                        copyrightModal.classList.add('hidden');
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            }
-
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !copyrightModal.classList.contains('hidden')) {
-                    copyrightModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-
-            // Email Modal Functionality
+        // Email Modal Functionality
             const emailButton = document.getElementById('email-button');
             const emailModal = document.getElementById('email-modal');
             const closeEmailModal = document.getElementById('close-email-modal');
@@ -1424,14 +1262,9 @@
             tooltip.classList.remove('show');
         }
 
-        // Simple copyright notice
-        function addCopyrightNotice() {
-            console.log('%c© 2025 Orbital Field Station - All Rights Reserved', 'color: #B8735A; font-size: 12px;');
-        }
+
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize simple copyright notice
-            addCopyrightNotice();
             
             // Generate the ancient words network
             generateAncientWordsNetwork();
