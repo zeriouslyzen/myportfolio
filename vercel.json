@@ -35,16 +35,7 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/OrbitalPort.html"
-    },
-    {
-      "source": "/index.html",
-      "destination": "/OrbitalPort.html"
-    }
-  ],
+  "cleanUrls": true,
   "regions": ["iad1"],
   "github": {
     "silent": true
