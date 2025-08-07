@@ -311,50 +311,211 @@
         .folio.open .folio-content { max-height: 1000px; padding: 1.5rem 1.5rem; border-top: 1px solid var(--ochre); }
         .folio.open .folio-arrow { transform: rotate(90deg); }
         
-        /* --- Instrument Room: Redesigned Cognitive Flight Deck --- */
-        #flight-deck-container {
-            background: #FFFFFF;
-            color: #1f2937;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.15);
-            border: 1px solid #e5e7eb;
+        /* --- Instrument Room: Dark Modern Interface --- */
+        
+        /* Modern Cards - Compact Theme Matching Site */
+        .modern-card {
+            background-color: var(--sandstone);
+            border: 1px solid var(--ochre);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
-
-        .main-display {
-            background-color: #f9fafb;
-            border-radius: 1rem;
-            border: 1px solid #e5e7eb;
-            box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.05);
+        
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--terracotta);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-
-        .data-card {
-            background-color: #ffffff;
-            border-radius: 0.75rem;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
+        
+        .modern-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(184, 115, 90, 0.15);
+            border-color: var(--terracotta);
+        }
+        
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+        
+        .modern-card.active {
+            border-color: var(--terracotta);
+            box-shadow: 0 8px 30px rgba(184, 115, 90, 0.2);
+        }
+        
+        .modern-card.active::before {
+            opacity: 1;
+        }
+        
+        /* Card Header */
+        .card-header {
             cursor: pointer;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
         }
-        .data-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1);
-            border-color: var(--sky-blue);
+        
+        .card-header:hover {
+            background-color: var(--ochre);
         }
-        .data-card-content {
+        
+        /* Card Info */
+        .card-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        
+        .card-icon {
+            color: var(--terracotta);
+            opacity: 0.8;
+        }
+        
+        .card-text {
+            flex: 1;
+        }
+        
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+            margin: 0 0 2px 0;
+            line-height: 1.3;
+        }
+        
+        .card-subtitle {
+            font-size: 11px;
+            color: #6a7b53;
+            margin: 0;
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Card Actions */
+        .card-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--botanical-green);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        
+        .expand-icon {
+            color: var(--terracotta);
+            transition: transform 0.3s ease;
+        }
+        
+        .modern-card.active .expand-icon {
+            transform: rotate(180deg);
+            color: var(--terracotta);
+        }
+        
+        /* Card Panel */
+        .card-panel {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), padding-top 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            padding-top: 0;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--ochre);
+            border-top: 1px solid var(--ochre);
         }
-        .data-card.open .data-card-content {
-            max-height: 1000px;
-            padding-top: 1rem;
+        
+        .modern-card.active .card-panel {
+            max-height: 200px;
         }
-        .data-card-arrow {
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        
+        .panel-content {
+            padding: 16px;
         }
-        .data-card.open .data-card-arrow {
-            transform: rotate(180deg);
+        
+        .panel-description {
+            color: #4a5568;
+            line-height: 1.5;
+            font-size: 13px;
+            margin: 0 0 12px 0;
+        }
+        
+        .panel-meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .meta-label {
+            font-size: 10px;
+            color: #6a7b53;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        
+        .meta-value {
+            font-size: 12px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .meta-value.status {
+            color: var(--botanical-green);
+        }
+        
+        /* Discovery Logs Container */
+        #discovery-log-list {
+            position: relative;
+        }
+        
+        #discovery-log-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--terracotta), var(--botanical-green));
+            opacity: 0.3;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card-header {
+                padding: 10px 12px;
+            }
+            
+            .card-title {
+                font-size: 13px;
+            }
+            
+            .card-subtitle {
+                font-size: 10px;
+            }
+            
+            .panel-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
         }
         
         /* --- Field Manual Styles --- */
@@ -364,6 +525,10 @@
         .field-manual-nav-button {
             background-color: var(--sandstone);
             border: 1px solid var(--ochre);
+            transition: all 0.3s ease;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         /* Email Button Styles */
@@ -482,12 +647,13 @@
         .field-manual-nav-button:hover {
             background-color: var(--terracotta);
             color: var(--ivory);
-            box-shadow: 0 4px 10px -5px var(--terracotta);
-            transform: translateY(-2px);
+            box-shadow: 0 2px 8px -3px var(--terracotta);
+            transform: translateY(-1px);
         }
         .field-manual-nav-button:disabled {
-            opacity: 0.5;
+            opacity: 0.3;
             cursor: not-allowed;
+            transform: none;
         }
         .epilogue-grid {
             display: grid;
@@ -527,12 +693,12 @@
         </div>
         
         <header class="w-full mb-8">
-            <nav class="flex justify-center space-x-6 sm:space-x-10 text-gray-600 ui-font text-sm sm:text-base">
-                <a href="#" id="nav-deck" class="nav-item active" onclick="showZone('deck')">Observation Deck</a>
-                <a href="#" id="nav-archive" class="nav-item" onclick="showZone('archive')">The Archive</a>
-                <a href="#" id="nav-instrument" class="nav-item" onclick="showZone('instrument')">Instrument Room</a>
-                <a href="#" id="nav-logbook" class="nav-item" onclick="showZone('logbook')">Logbook</a>
-            </nav>
+                    <nav class="flex justify-center space-x-6 sm:space-x-10 text-gray-600 ui-font text-sm sm:text-base" role="navigation" aria-label="Main navigation">
+            <a href="#" id="nav-deck" class="nav-item active" onclick="showZone('deck')" role="tab" aria-selected="true" aria-controls="zone-deck">Observation Deck</a>
+            <a href="#" id="nav-archive" class="nav-item" onclick="showZone('archive')" role="tab" aria-selected="false" aria-controls="zone-archive">The Archive</a>
+            <a href="#" id="nav-instrument" class="nav-item" onclick="showZone('instrument')" role="tab" aria-selected="false" aria-controls="zone-instrument">Instrument Room</a>
+            <a href="#" id="nav-logbook" class="nav-item" onclick="showZone('logbook')" role="tab" aria-selected="false" aria-controls="zone-logbook">Logbook</a>
+        </nav>
         </header>
 
         <main id="main-content">
@@ -570,9 +736,9 @@
                         <!-- Log entries will be injected here -->
                     </div>
                     <div id="field-manual-nav" class="mt-8 flex justify-between items-center">
-                        <button id="prev-entry-btn" class="field-manual-nav-button ui-font font-semibold py-2 px-5 rounded-full">◀ Prev Entry</button>
-                        <span id="entry-counter" class="mono-font text-sm text-gray-500"></span>
-                        <button id="next-entry-btn" class="field-manual-nav-button ui-font font-semibold py-2 px-5 rounded-full">Next Entry ▶</button>
+                                    <button id="prev-entry-btn" class="field-manual-nav-button ui-font font-semibold py-1 px-3 rounded text-xs" aria-label="Previous entry">← PREV</button>
+            <span id="entry-counter" class="mono-font text-xs text-gray-500" aria-live="polite"></span>
+            <button id="next-entry-btn" class="field-manual-nav-button ui-font font-semibold py-1 px-3 rounded text-xs" aria-label="Next entry">NEXT →</button>
                     </div>
                 </div>
             </div>
@@ -743,47 +909,144 @@
                 </div>
             </div>
 
-            <div id="zone-instrument" class="zone-content content-panel rounded-lg shadow-lg p-0 sm:p-0 w-full border-0">
-                <div id="flight-deck-container">
-                    <h1 class="text-3xl font-bold mb-2 ui-font text-gray-800">// Instrument Room // Cognitive Flight Deck</h1>
-                    <p class="text-lg mb-8 text-gray-500">Welcome to the Cognitive Flight Deck. This module functions as your interactive instrumentation array. Each subsystem connects to a live research vector or engineering log. Observe. Operate. Adjust.</p>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <!-- Left Column: Main Display -->
-                        <div class="lg:col-span-2 main-display p-6">
-                            <h2 class="text-xl font-semibold text-gray-700 mb-4">Main Display // Discovery Logs</h2>
-                            <div id="discovery-log-list" class="space-y-3">
+            <div id="zone-instrument" class="zone-content content-panel rounded-lg shadow-lg p-8 sm:p-12 w-full">
+                <!-- Clean Research Header -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h1 class="text-3xl sm:text-4xl font-bold ui-font mb-2" style="color: var(--indigo);">
+                                // COGNITIVE FLIGHT DECK //
+                            </h1>
+                            <p class="text-lg text-gray-600 mono-font">STARDATE: 80125.1 // INSTRUMENT ROOM ONLINE</p>
+                        </div>
+                        <div class="hidden sm:block">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-botanical-green rounded-full"></div>
+                                <span class="mono-font text-sm text-gray-500">SYSTEM ACTIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-sandstone p-4 rounded-lg border border-ochre">
+                        <p class="text-base text-gray-700 leading-relaxed">
+                            <strong>MISSION BRIEF:</strong> Welcome to the Cognitive Flight Deck. This module functions as your interactive instrumentation array. 
+                            Each subsystem connects to a live research vector or engineering log. Observe. Operate. Adjust.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Clean Research Layout -->
+                <div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
+                    <!-- Main Research Logs Panel -->
+                    <div class="xl:col-span-3">
+                        <div class="bg-sandstone rounded-lg border border-ochre p-6 shadow-lg">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-xl font-semibold text-gray-800 ui-font">
+                                    MAIN DISPLAY // DISCOVERY LOGS
+                                </h2>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-botanical-green rounded-full"></div>
+                                    <span class="mono-font text-xs text-gray-600">LIVE DATA</span>
+                                </div>
+                            </div>
+                            <div id="discovery-log-list" class="space-y-2">
                                 <!-- Discovery logs will be injected here by JS -->
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Right Column: System Status -->
-                        <div class="lg:col-span-1 space-y-6">
-                             <div>
-                                <h3 class="text-lg font-semibold text-gray-700 mb-3">System Status</h3>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center bg-white p-3 rounded-lg border border-gray-200">
-                                        <span class="font-medium">Core Loop</span>
-                                        <span class="flex items-center mono-font text-sm"><div class="status-light mr-2" style="background-color: var(--botanical-green);"></div>STABLE</span>
+                    <!-- Clean System Status Panel -->
+                    <div class="xl:col-span-1 space-y-6">
+                        <!-- System Status -->
+                        <div class="bg-sandstone rounded-lg border border-ochre p-4 shadow-lg">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800 ui-font">
+                                    SYSTEM STATUS
+                                </h3>
+                                <div class="w-3 h-3 bg-botanical-green rounded-full"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded border border-gray-200">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-gray-700">Core Loop</span>
+                                        <span class="mono-font text-sm font-semibold text-botanical-green">STABLE</span>
                                     </div>
-                                    <div class="flex justify-between items-center bg-white p-3 rounded-lg border border-gray-200">
-                                        <span class="font-medium">Memory Layers</span>
-                                        <span class="flex items-center mono-font text-sm"><div class="status-light mr-2" style="background-color: var(--botanical-green);"></div>ONLINE</span>
+                                </div>
+                                
+                                <div class="bg-white p-3 rounded border border-gray-200">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-gray-700">Memory Layers</span>
+                                        <span class="mono-font text-sm font-semibold text-botanical-green">ONLINE</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white p-3 rounded border border-gray-200">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-gray-700">Neural Network</span>
+                                        <span class="mono-font text-sm font-semibold text-terracotta">OPTIMIZING</span>
                                     </div>
                                 </div>
                             </div>
-                             <div>
-                                <h3 class="text-lg font-semibold text-gray-700 mb-3">Active Experiments</h3>
-                                 <div class="space-y-3">
-                                    <div class="flex justify-between items-center bg-white p-3 rounded-lg border border-gray-200">
-                                        <span class="font-medium">Emergence Protocol</span>
-                                        <span class="font-semibold text-sm" style="color: var(--terracotta);">RUNNING</span>
+                        </div>
+
+                        <!-- Active Experiments -->
+                        <div class="bg-sandstone rounded-lg border border-ochre p-4 shadow-lg">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800 ui-font">
+                                    ACTIVE EXPERIMENTS
+                                </h3>
+                                <div class="w-3 h-3 bg-terracotta rounded-full"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded border border-gray-200">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-gray-700">Emergence Protocol</span>
+                                        <span class="font-semibold text-sm text-terracotta mono-font">RUNNING</span>
                                     </div>
-                                     <div class="flex justify-between items-center bg-white p-3 rounded-lg border border-gray-200">
-                                        <span class="font-medium">Quantum-Like Learning</span>
-                                        <span class="font-semibold text-sm text-gray-400">IDLE</span>
-                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Phase 3: Consciousness Mapping</div>
                                 </div>
+                                
+                                <div class="bg-white p-3 rounded border border-gray-200">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-gray-700">Quantum-Like Learning</span>
+                                        <span class="font-semibold text-sm text-gray-400 mono-font">IDLE</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Awaiting activation</div>
+                                </div>
+                                
+                                <div class="bg-white p-3 rounded border border-gray-200">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium text-gray-700">Temporal Reflection</span>
+                                        <span class="font-semibold text-sm text-botanical-green mono-font">ACTIVE</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Memory consolidation</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Research Actions -->
+                        <div class="bg-sandstone rounded-lg border border-ochre p-4 shadow-lg">
+                            <h3 class="text-lg font-semibold text-gray-800 ui-font mb-4">
+                                RESEARCH ACTIONS
+                            </h3>
+                            <div class="space-y-2">
+                                <button class="w-full bg-white hover:bg-gray-50 p-3 rounded border border-gray-200 text-left transition-all duration-300 hover:shadow-md">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-medium text-gray-700">Initialize Protocol</span>
+                                        <span class="text-terracotta">→</span>
+                                    </div>
+                                </button>
+                                <button class="w-full bg-white hover:bg-gray-50 p-3 rounded border border-gray-200 text-left transition-all duration-300 hover:shadow-md">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-medium text-gray-700">Memory Dump</span>
+                                        <span class="text-terracotta">→</span>
+                                    </div>
+                                </button>
+                                <button class="w-full bg-white hover:bg-gray-50 p-3 rounded border border-gray-200 text-left transition-all duration-300 hover:shadow-md">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-medium text-gray-700">System Diagnostics</span>
+                                        <span class="text-terracotta">→</span>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -898,12 +1161,24 @@
         function showZone(zoneId) {
             event.preventDefault();
             if (currentZoneId === zoneId) return;
-            document.querySelector('#zone-' + currentZoneId).classList.remove('active');
-            document.querySelector('#nav-' + currentZoneId).classList.remove('active');
             
+            // Update previous zone
+            const prevZone = document.querySelector('#zone-' + currentZoneId);
+            const prevNav = document.querySelector('#nav-' + currentZoneId);
+            if (prevZone) prevZone.classList.remove('active');
+            if (prevNav) {
+                prevNav.classList.remove('active');
+                prevNav.setAttribute('aria-selected', 'false');
+            }
+            
+            // Update new zone
             const newZoneEl = document.querySelector('#zone-' + zoneId);
-            newZoneEl.classList.add('active');
-            document.querySelector('#nav-' + zoneId).classList.add('active');
+            const newNavEl = document.querySelector('#nav-' + zoneId);
+            if (newZoneEl) newZoneEl.classList.add('active');
+            if (newNavEl) {
+                newNavEl.classList.add('active');
+                newNavEl.setAttribute('aria-selected', 'true');
+            }
             
             currentZoneId = zoneId;
         }
@@ -1028,11 +1303,36 @@
             if (!contentEl || !counterEl || !prevBtn || !nextBtn) return;
 
             const entry = fieldManualEntries[index];
+            
+            // Safe HTML sanitization that allows basic formatting tags
+            const sanitizeHTML = (str) => {
+                if (!str) return '';
+                // Allow safe HTML tags: p, strong, em, br, ul, ol, li
+                const allowedTags = ['p', 'strong', 'em', 'br', 'ul', 'ol', 'li'];
+                const div = document.createElement('div');
+                div.innerHTML = str;
+                
+                // Remove any script tags or other dangerous elements
+                const scripts = div.querySelectorAll('script, style, iframe, object, embed');
+                scripts.forEach(el => el.remove());
+                
+                // Only keep allowed tags
+                const allElements = div.querySelectorAll('*');
+                allElements.forEach(el => {
+                    if (!allowedTags.includes(el.tagName.toLowerCase())) {
+                        // Replace with text content
+                        el.outerHTML = el.textContent;
+                    }
+                });
+                
+                return div.innerHTML;
+            };
+            
             contentEl.innerHTML = `
                 <div class="field-manual-entry">
-                    <h2 class="text-2xl font-bold ui-font mb-2" style="color: var(--indigo);">${entry.title}</h2>
-                    ${entry.subtitle ? `<h3 class="text-lg italic text-gray-500 mb-4">${entry.subtitle}</h3>` : ''}
-                    <div class="text-base sm:text-lg leading-relaxed space-y-4">${entry.content}</div>
+                    <h2 class="text-2xl font-bold ui-font mb-2" style="color: var(--indigo);">${sanitizeHTML(entry.title)}</h2>
+                    ${entry.subtitle ? `<h3 class="text-lg italic text-gray-500 mb-4">${sanitizeHTML(entry.subtitle)}</h3>` : ''}
+                    <div class="text-base sm:text-lg leading-relaxed space-y-4">${sanitizeHTML(entry.content)}</div>
                 </div>
             `;
             
@@ -1046,23 +1346,86 @@
             if (!container) return;
             
             let html = '';
-            discoveryLogs.forEach(log => {
+            discoveryLogs.forEach((log, index) => {
+                // Sanitize individual text content
+                const sanitizeText = (str) => {
+                    const div = document.createElement('div');
+                    div.textContent = str;
+                    return div.innerHTML;
+                };
+                
                 html += `
-                    <div class="data-card p-4" onclick="toggleDataCard(this)">
-                        <div class="data-card-header">
-                            <span class="font-semibold text-md text-gray-800">${log.title}</span>
-                            <div class="data-card-arrow text-gray-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    <div class="modern-card" data-index="${index}">
+                        <div class="card-header" onclick="toggleModernCard(${index})">
+                            <div class="card-info">
+                                <div class="card-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <div class="card-text">
+                                    <h4 class="card-title">${sanitizeText(log.title)}</h4>
+                                    <p class="card-subtitle">${sanitizeText(log.class)}</p>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <span class="status-dot"></span>
+                                <div class="expand-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
-                        <div class="data-card-content">
-                            <p class="text-gray-600 mb-3">${log.novelty}</p>
-                            <p class="mono-font text-sm"><strong style="color: var(--terracotta);">CLASS:</strong> ${log.class}</p>
+                        <div class="card-panel">
+                            <div class="panel-content">
+                                <p class="panel-description">${sanitizeText(log.novelty)}</p>
+                                <div class="panel-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Type</span>
+                                        <span class="meta-value">${sanitizeText(log.class)}</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Status</span>
+                                        <span class="meta-value status">Active</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
             });
             container.innerHTML = html;
+        }
+        
+        function toggleModernCard(index) {
+            const card = document.querySelector(`[data-index="${index}"]`);
+            const allCards = document.querySelectorAll('.modern-card');
+            
+            // Close all other cards
+            allCards.forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('active');
+                }
+            });
+            
+            // Toggle current card
+            card.classList.toggle('active');
+        }
+        
+        function toggleAdvancedCard(index) {
+            const card = document.querySelector(`[data-index="${index}"]`);
+            const allCards = document.querySelectorAll('.advanced-card');
+            
+            // Close all other cards
+            allCards.forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('active');
+                }
+            });
+            
+            // Toggle current card
+            card.classList.toggle('active');
         }
 
         // --- Ancient Knowledge Network Generation ---
@@ -1131,7 +1494,7 @@
             if (!networkContainer || !tooltip) return;
             
             // Clear existing content
-            networkContainer.innerHTML = '';
+            networkContainer.innerHTML = ''; // Safe - just clearing content
             
             // Generate ancient word nodes positioned around perimeter
             const nodes = [];
@@ -1245,10 +1608,17 @@
         
         function showAncientWordTooltip(event, node) {
             const tooltip = document.getElementById('symbol-tooltip');
+            // Sanitize tooltip content
+            const sanitizeHTML = (str) => {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            };
+            
             tooltip.innerHTML = `
-                <div class="symbol-id">${node.id}</div>
-                <div class="symbol-meaning">${node.meaning}</div>
-                <div class="symbol-etymology" style="margin-top: 8px; font-size: 10px; color: var(--terracotta);">${node.etymology}</div>
+                <div class="symbol-id">${sanitizeHTML(node.id)}</div>
+                <div class="symbol-meaning">${sanitizeHTML(node.meaning)}</div>
+                <div class="symbol-etymology" style="margin-top: 8px; font-size: 10px; color: var(--terracotta);">${sanitizeHTML(node.etymology)}</div>
             `;
             
             tooltip.style.left = (event.pageX + 10) + 'px';
@@ -1264,47 +1634,77 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            
-            console.log('DOM loaded - starting initialization');
-            
-            // Generate the ancient words network
-            generateAncientWordsNetwork();
-            
-            // Activate the default zone - FIXED
-            const deckZone = document.querySelector('#zone-deck');
-            const deckNav = document.querySelector('#nav-deck');
-            console.log('Deck zone found:', deckZone);
-            console.log('Deck nav found:', deckNav);
-            if (deckZone && deckNav) {
-                deckZone.classList.add('active');
-                deckNav.classList.add('active');
-                console.log('Zones activated successfully');
-            } else {
-                console.log('ERROR: Could not find zone elements');
-            }
-            
-            // Initialize Field Manual
-            const prevBtn = document.getElementById('prev-entry-btn');
-            const nextBtn = document.getElementById('next-entry-btn');
-            if(prevBtn && nextBtn) {
-                prevBtn.addEventListener('click', () => {
-                    if (currentEntryIndex > 0) {
-                        currentEntryIndex--;
-                        displayEntry(currentEntryIndex);
-                    }
-                });
-                nextBtn.addEventListener('click', () => {
-                    if (currentEntryIndex < fieldManualEntries.length - 1) {
-                        currentEntryIndex++;
-                        displayEntry(currentEntryIndex);
-                    }
-                });
-                displayEntry(currentEntryIndex);
-            }
+            try {
+                // Generate the ancient words network
+                generateAncientWordsNetwork();
+                
+                // Activate the default zone
+                const deckZone = document.querySelector('#zone-deck');
+                const deckNav = document.querySelector('#nav-deck');
+                if (deckZone && deckNav) {
+                    deckZone.classList.add('active');
+                    deckNav.classList.add('active');
+                }
+                
+                // Initialize Field Manual
+                const prevBtn = document.getElementById('prev-entry-btn');
+                const nextBtn = document.getElementById('next-entry-btn');
+                if(prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        if (currentEntryIndex > 0) {
+                            currentEntryIndex--;
+                            displayEntry(currentEntryIndex);
+                        }
+                    });
+                    nextBtn.addEventListener('click', () => {
+                        if (currentEntryIndex < fieldManualEntries.length - 1) {
+                            currentEntryIndex++;
+                            displayEntry(currentEntryIndex);
+                        }
+                    });
+                    displayEntry(currentEntryIndex);
+                }
 
-            // Populate other zones
-            populateDiscoveryLogs();
+                // Populate other zones
+                populateDiscoveryLogs();
+                
+                // Initialize Flight Deck Quick Actions
+                initializeFlightDeckActions();
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
         });
+        
+        // Flight Deck Quick Actions
+        function initializeFlightDeckActions() {
+            const quickActions = document.querySelectorAll('.quick-action-btn');
+            quickActions.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.querySelector('span').textContent;
+                    showActionFeedback(action);
+                });
+            });
+        }
+        
+        function showActionFeedback(action) {
+            // Create a temporary feedback element
+            const feedback = document.createElement('div');
+            feedback.className = 'fixed top-4 right-4 bg-sandstone border border-ochre p-4 rounded-lg shadow-lg z-50';
+            feedback.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-botanical-green rounded-full animate-pulse"></div>
+                    <span class="mono-font text-sm">${action} INITIATED</span>
+                </div>
+            `;
+            document.body.appendChild(feedback);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                feedback.remove();
+            }, 3000);
+        }
+        
+
     </script>
 
 </body>
