@@ -1014,6 +1014,47 @@
     <!-- Sidebar Overlay -->
     <div id="manifest-overlay" class="manifest-overlay" onclick="toggleManifest()"></div>
 
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-[2000] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeBookingModal()"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-lg shadow-2xl p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="ui-font text-lg font-bold text-gray-800">📞 Discovery Call</h3>
+                <button onclick="closeBookingModal()"
+                    class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">15-min signal check. Free. No commitment.</p>
+            <form id="booking-form" onsubmit="submitBooking(event)">
+                <div class="space-y-3">
+                    <input type="text" name="name" placeholder="Your Name" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent">
+                    <input type="email" name="email" placeholder="Email" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent">
+                    <input type="tel" name="phone" placeholder="Phone (optional)"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent">
+                    <select name="topic" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent bg-white">
+                        <option value="">Select a topic...</option>
+                        <option value="Somatic Engineering">Somatic Engineering</option>
+                        <option value="AI & Software">AI & Software Systems</option>
+                        <option value="Security">Security & Intelligence</option>
+                        <option value="Human Performance">Human Performance</option>
+                        <option value="Other">Other / General</option>
+                    </select>
+                    <textarea name="message" placeholder="Brief context (optional)" rows="2"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-terracotta focus:border-transparent resize-none"></textarea>
+                </div>
+                <button type="submit" id="booking-submit"
+                    class="w-full mt-4 py-3 bg-terracotta text-white rounded-md font-medium hover:bg-[#a0522d] transition-colors ui-font">
+                    Request Call
+                </button>
+            </form>
+            <p id="booking-success" class="hidden text-center text-botanical-green font-medium mt-4">✓ Request sent!
+                We'll be in touch.</p>
+        </div>
+    </div>
+
     <!-- Side Menu: The Manifest -->
     <aside id="manifest-sidebar" class="manifest-sidebar">
         <div class="manifest-header">
@@ -1227,9 +1268,8 @@
             </div>
             <div class="space-y-3">
                 <!-- Discovery Call (Free) -->
-                <a href="#calendly-placeholder" target="_blank"
-                    class="block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group"
-                    onclick="alert('Replace #calendly-placeholder with your Calendly link'); return false;">
+                <button onclick="openBookingModal()"
+                    class="w-full text-left block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group cursor-pointer">
                     <div class="flex justify-between items-center">
                         <span
                             class="font-bold text-sm text-gray-800 group-hover:text-terracotta transition-colors">Discovery
@@ -1238,12 +1278,11 @@
                             class="text-[10px] bg-botanical-green text-white px-2 py-0.5 rounded font-medium">FREE</span>
                     </div>
                     <p class="text-xs text-gray-500 mt-1">15-min signal check. See if we're aligned.</p>
-                </a>
+                </button>
 
                 <!-- Diagnostic Session ($500) -->
-                <a href="#stripe-diagnostic" target="_blank"
-                    class="block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group"
-                    onclick="alert('Replace #stripe-diagnostic with your Stripe Payment Link'); return false;">
+                <a href="https://buy.stripe.com/4gM14n7I5g3cgx51NAfEk03" target="_blank"
+                    class="block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group">
                     <div class="flex justify-between items-center">
                         <span
                             class="font-bold text-sm text-gray-800 group-hover:text-terracotta transition-colors">Diagnostic
@@ -1254,9 +1293,8 @@
                 </a>
 
                 <!-- Engagement Package ($2,500) -->
-                <a href="#stripe-engagement" target="_blank"
-                    class="block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group"
-                    onclick="alert('Replace #stripe-engagement with your Stripe Payment Link'); return false;">
+                <a href="https://buy.stripe.com/00w7sL8M95oyft1ak6fEk02" target="_blank"
+                    class="block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group">
                     <div class="flex justify-between items-center">
                         <span
                             class="font-bold text-sm text-gray-800 group-hover:text-terracotta transition-colors">Engagement
@@ -1267,9 +1305,8 @@
                 </a>
 
                 <!-- Premium Retainer ($5,000/mo) -->
-                <a href="#stripe-retainer" target="_blank"
-                    class="block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group"
-                    onclick="alert('Replace #stripe-retainer with your Stripe Payment Link'); return false;">
+                <a href="https://buy.stripe.com/fZueVdaUhdV4a8H1NAfEk01" target="_blank"
+                    class="block p-3 rounded border border-gray-200 hover:border-terracotta hover:bg-white/50 transition-all group">
                     <div class="flex justify-between items-center">
                         <span
                             class="font-bold text-sm text-gray-800 group-hover:text-terracotta transition-colors">Premium
@@ -2645,6 +2682,46 @@
 
         // Add event listener to toggle button
         document.getElementById('manifest-toggle').addEventListener('click', toggleManifest);
+
+        // --- Booking Modal Logic ---
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+            // Reset form
+            document.getElementById('booking-form').reset();
+            document.getElementById('booking-form').classList.remove('hidden');
+            document.getElementById('booking-success').classList.add('hidden');
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Send to email (using mailto as fallback, or could integrate with backend)
+            const subject = encodeURIComponent(`Discovery Call Request: ${data.topic}`);
+            const body = encodeURIComponent(
+                `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || 'N/A'}\nTopic: ${data.topic}\n\nMessage:\n${data.message || 'No additional context provided.'}`
+            );
+
+            // Option 1: Open email client
+            window.open(`mailto:signal@jackdanger.dev?subject=${subject}&body=${body}`, '_blank');
+
+            // Show success
+            form.classList.add('hidden');
+            document.getElementById('booking-success').classList.remove('hidden');
+
+            // Auto-close after 3 seconds
+            setTimeout(() => {
+                closeBookingModal();
+            }, 3000);
+        }
     </script>
 
 </body>
