@@ -1079,6 +1079,125 @@
             border: 1px solid currentColor;
             opacity: 0.8;
         }
+
+        /* Engagement Signal Pop-up */
+        .engagement-signal {
+            position: fixed;
+            bottom: 24px;
+            left: -400px;
+            width: 320px;
+            background: rgba(255, 251, 245, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--terracotta);
+            border-left: 4px solid var(--terracotta);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(184, 115, 90, 0.15);
+            z-index: 1000;
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            opacity: 0;
+        }
+
+        .engagement-signal.active {
+            left: 24px;
+            opacity: 1;
+        }
+
+        .signal-header {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--terracotta);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .signal-header::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(184, 115, 90, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(184, 115, 90, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(184, 115, 90, 0);
+            }
+        }
+
+        .signal-title {
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--sumi-black);
+            margin-bottom: 6px;
+        }
+
+        .signal-desc {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .signal-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: var(--terracotta);
+            color: white;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+
+        .signal-btn:hover {
+            background: #a0522d;
+            transform: translateY(-1px);
+        }
+
+        .signal-close {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .signal-close:hover {
+            color: var(--terracotta);
+        }
+
+        @media (max-width: 640px) {
+            .engagement-signal {
+                width: calc(100% - 48px);
+                left: -100%;
+            }
+
+            .engagement-signal.active {
+                left: 24px;
+            }
+        }
     </style>
 </head>
 
@@ -1342,7 +1461,7 @@
             </div>
         </div>
         <!-- ENGAGE SECTION -->
-        <div class="manifest-section bg-gradient-to-b from-white/80 to-ochre/10">
+        <div id="engage-section" class="manifest-section bg-gradient-to-b from-white/80 to-ochre/10">
             <div class="manifest-category">
                 <span class="text-terracotta">⚡ //</span> ENGAGE
             </div>
@@ -2802,7 +2921,48 @@
                 closeBookingModal();
             }, 3000);
         }
+
+        // --- Engagement Signal Logic ---
+        function showSignal() {
+            if (!sessionStorage.getItem('signalShown')) {
+                setTimeout(() => {
+                    document.getElementById('engagement-signal').classList.add('active');
+                }, 7000); // 7 second delay
+            }
+        }
+
+        function closeSignal() {
+            document.getElementById('engagement-signal').classList.remove('active');
+            sessionStorage.setItem('signalShown', 'true');
+        }
+
+        function engageProtocols() {
+            closeSignal();
+
+            // Open sidebar
+            const sidebar = document.getElementById('manifest-sidebar');
+            if (!sidebar.classList.contains('active')) {
+                toggleManifest();
+            }
+
+            // Scroll to engage section
+            setTimeout(() => {
+                document.getElementById('engage-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 400); // Short delay to allow sidebar animation
+        }
+
+        // Initialize signal
+        document.addEventListener('DOMContentLoaded', showSignal);
     </script>
+
+    <!-- Engagement Signal Pop-up -->
+    <div id="engagement-signal" class="engagement-signal">
+        <span class="signal-close" onclick="closeSignal()">&times;</span>
+        <div class="signal-header">INCOMING SIGNAL // SOURCE: ENGAGE_UNIT</div>
+        <div class="signal-title">Engage Protocols Active</div>
+        <div class="signal-desc">Consulting slots are currently available for AI systems & somatic engineering.</div>
+        <button class="signal-btn ui-font" onclick="engageProtocols()">ACCESS ENGAGE PROTOCOLS</button>
+    </div>
 
 </body>
 
