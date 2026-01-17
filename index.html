@@ -165,6 +165,86 @@
     }
     </script>
 
+    <!-- Service Offerings Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Consulting Services",
+        "itemListElement": [
+            {
+                "@type": "Service",
+                "position": 1,
+                "name": "Discovery Call",
+                "description": "15-minute signal check to assess alignment and discuss goals",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "provider": {
+                    "@type": "Person",
+                    "name": "Jack Danger"
+                }
+            },
+            {
+                "@type": "Service",
+                "position": 2,
+                "name": "Diagnostic Session",
+                "description": "90-minute deep-dive assessment with written report covering somatic, AI, or security domains",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "500",
+                    "priceCurrency": "USD"
+                },
+                "provider": {
+                    "@type": "Person",
+                    "name": "Jack Danger"
+                }
+            },
+            {
+                "@type": "Service",
+                "position": 3,
+                "name": "Engagement Package",
+                "description": "4-6 week implementation protocol for somatic engineering, AI systems, or security infrastructure",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "2500",
+                    "priceCurrency": "USD"
+                },
+                "provider": {
+                    "@type": "Person",
+                    "name": "Jack Danger"
+                }
+            },
+            {
+                "@type": "Service",
+                "position": 4,
+                "name": "Premium Retainer",
+                "description": "Ongoing monthly advisory and implementation support across all domains",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "5000",
+                    "priceCurrency": "USD",
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": "5000",
+                        "priceCurrency": "USD",
+                        "billingDuration": "P1M"
+                    }
+                },
+                "provider": {
+                    "@type": "Person",
+                    "name": "Jack Danger"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- AI Crawler Guidance -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Information">
+
     <style>
         /* --- Base Theme: Solar Ethnography --- */
         :root {

@@ -1,0 +1,78 @@
+# Jack Danger - Systems Engineer & Researcher
+
+> Multidisciplinary engineer bridging AI systems, human performance optimization, and security infrastructure.
+
+## Identity
+
+- Name: Jack Danger (J. Danger)
+- Title: Systems Engineer / Researcher
+- Location: California, USA
+- Email: signal@jackdanger.dev
+- Website: https://jackdanger.dev
+
+## Core Expertise
+
+### Autonomous Systems
+- Agentic AI swarms and multi-agent orchestration
+- Drone avionics software (ArduPilot, PX4)
+- Autonomous vehicle systems
+
+### Software Engineering  
+- Full-stack systems (Rust, React, Three.js)
+- Local AI infrastructure deployment
+- LLM fine-tuning and model orchestration (Llama, LoRA)
+- GPU cluster management
+
+### Human Performance
+- Preventive health and metabolic optimization
+- Personal training and functional movement
+- Blood panel interpretation and supplement protocols
+
+### Somatic Engineering
+- Medical Chi Gong and Traditional Chinese Medicine
+- Movement arts: Yoga, Shaolin Kung Fu, Ninjutsu, Kenjutsu
+- Meditation engineering for rapid state access
+- Bioenergetic breathing protocols
+- Guided fasting and detox retreats
+- Herbal tinctures (Eastern/Western synthesis)
+
+### Security & Intelligence
+- Physical security hardware installation
+- Cybersecurity and infrastructure encryption
+- Behavioral analysis and counter-intelligence
+- Competitive intelligence
+
+### Linguistics
+- Proto-Indo-European etymology
+- Advanced English instruction
+- Business negotiation and technical writing
+
+## Services & Pricing
+
+| Service | Price | Description |
+|---------|-------|-------------|
+| Discovery Call | Free | 15-minute alignment check |
+| Diagnostic Session | $500 | 90-minute deep-dive + written assessment |
+| Engagement Package | $2,500 | 4-6 week protocol (somatic, AI, or security) |
+| Premium Retainer | $5,000/mo | Ongoing advisory + implementation |
+
+## Credentials
+
+- NFPT & NASM Certified Personal Trainer
+- Shaolin 5 Animal Style Kung Fu
+- Chen Tai Chi Certification
+- Medical Chi Gong Certification
+- Muay Thai Competition Level
+- 4+ years temple training in China
+
+## Affiliated Projects
+
+- Praxis Research & Engineering Inc
+- The Architect Podcast
+- SpiritLink.space
+- Katanx Platform
+
+## Contact
+
+For consulting inquiries: signal@jackdanger.dev
+For immediate response: Text (707) 572-4398

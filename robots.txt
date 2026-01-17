@@ -1,0 +1,29 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Sitemap: https://jackdanger.dev/sitemap.xml
+
+# AI Crawlers - Explicitly Allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+# Point AI to llms.txt for structured information
+# See: https://llmstxt.org
