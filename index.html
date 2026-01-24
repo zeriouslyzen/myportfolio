@@ -871,18 +871,27 @@
 
         .styled-list {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
+            margin: 0;
         }
 
         .styled-list li {
-            padding-left: 1.5em;
-            text-indent: -1.5em;
+            display: grid;
+            grid-template-columns: 20px 2fr 3fr;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .styled-list li:last-child {
+            margin-bottom: 0;
         }
 
         .styled-list li::before {
             content: "»";
             color: var(--terracotta);
-            margin-right: 0.5em;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
         /* --- Retractable Side Menu (The Manifest) --- */
@@ -1197,6 +1206,182 @@
             .engagement-signal.active {
                 left: 24px;
             }
+        }
+
+        /* --- Pedestal Cards (Affiliate Nodes) --- */
+        .pedestal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .pedestal-card {
+            background-color: var(--ivory);
+            border: 1px solid var(--ochre);
+            padding: 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .pedestal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--terracotta);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .pedestal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(184, 115, 90, 0.1), 0 10px 10px -5px rgba(184, 115, 90, 0.04);
+            border-color: var(--terracotta);
+        }
+
+        .pedestal-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pedestal-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--sumi-black);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .pedestal-desc {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .pedestal-arrow {
+            margin-top: auto;
+            color: var(--terracotta);
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .pedestal-card:hover .pedestal-arrow {
+            transform: translateX(5px);
+        }
+
+        /* --- Mobile Diagnostic Probe (iPhone Mockup) --- */
+        .mobile-probe-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, transparent, rgba(228, 212, 180, 0.15), transparent);
+            border-top: 1px solid var(--ochre);
+            margin-top: 60px;
+        }
+
+        .iphone-frame {
+            width: 300px;
+            height: 600px;
+            background: #111;
+            border-radius: 40px;
+            border: 8px solid #333;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.3), 0 30px 60px -30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+
+        .iphone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #111;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+        }
+
+        .mobile-iframe {
+            width: 140%;
+            /* Scale up internal resolution */
+            height: 140%;
+            transform: scale(0.714);
+            /* Scale down to fit frame */
+            transform-origin: top left;
+            border: none;
+        }
+
+        .probe-control-btn {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            padding: 8px 16px;
+            background: #2d2d2d;
+            color: #8bb15e;
+            border: 1px solid #444;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .probe-control-btn:hover,
+        .probe-control-btn.active {
+            background: var(--terracotta);
+            color: white;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 15px rgba(184, 115, 90, 0.4);
+        }
+
+        .transmit-btn {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            padding: 6px 12px;
+            background: transparent;
+            color: var(--terracotta);
+            border: 1px solid var(--terracotta);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .transmit-btn:hover {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        .pedestal-arrow {
+            color: var(--terracotta);
+            font-size: 20px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .pedestal-arrow:hover {
+            transform: scale(1.2);
         }
     </style>
 </head>
@@ -2189,111 +2374,291 @@
                 </div>
             </div>
 
+            <section id="mobile-probe" class="mobile-probe-section text-center">
+                <h3 class="mono-font text-sm uppercase tracking-widest mb-12">Mobile Interface Diagnostic</h3>
+
+                <!-- URL Selector -->
+                <div class="mb-12 flex justify-center flex-wrap gap-4 max-w-4xl mx-auto px-4">
+                    <button onclick="updateProbe('https://1cebrg.com/app', '1cebrg')" class="probe-control-btn active"
+                        data-url="https://1cebrg.com/app">1CEBRG</button>
+                    <button onclick="updateProbe('https://www.praxislabs.technology', 'Praxis Research')"
+                        class="probe-control-btn" data-url="https://www.praxislabs.technology">PRAXIS</button>
+                    <button onclick="updateProbe('https://www.cosmic-deals.com', 'Cosmic Deals')"
+                        class="probe-control-btn" data-url="https://www.cosmic-deals.com">COSMIC</button>
+                    <button onclick="updateProbe('https://katanx.com/', 'Katanx')" class="probe-control-btn"
+                        data-url="https://katanx.com/">KATANX</button>
+                    <button onclick="updateProbe('https://globalcitizensengineers.com', 'Global Citizens Engineers')"
+                        class="probe-control-btn" data-url="https://globalcitizensengineers.com">GCE</button>
+                    <button onclick="updateProbe('https://www.spiritlink.space/', 'SpiritLink')"
+                        class="probe-control-btn" data-url="https://www.spiritlink.space/">SPIRITLINK</button>
+                </div>
+
+                <div class="flex flex-col items-center justify-center gap-12 px-4">
+                    <div class="iphone-frame">
+                        <div class="iphone-notch"></div>
+                        <div class="iphone-screen">
+                            <iframe src="https://1cebrg.com/app" class="mobile-iframe" loading="lazy"
+                                id="probe-iframe"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
-        <footer class="station-footer mt-12 pt-8 border-t border-ochre text-center text-gray-500">
-            <h3 class="mono-font text-sm uppercase tracking-widest mb-6">Affiliated Research Nodes</h3>
-
-            <div class="flex flex-col items-center space-y-5 mb-10">
-                <!-- Praxis - Emphasized Primary Node -->
-                <a href="https://www.praxislabs.technology" target="_blank"
-                    class="group relative inline-flex items-center gap-2 ui-font text-lg font-bold text-gray-800 hover:text-terracotta transition-colors duration-300">
-                    <span class="tracking-widest">PRAXIS RESEARCH & ENGINEERING</span>
-                    <span
-                        class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-[-10px] group-hover:translate-x-0">→</span>
-                </a>
-
-                <!-- Secondary Nodes -->
-                <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
-                    <a href="https://katanx.com/" target="_blank"
-                        class="nav-item ui-font hover:text-terracotta transition-colors duration-300">Katanx</a>
-                    <a href="https://1cebrg.com" target="_blank"
-                        class="nav-item ui-font hover:text-terracotta transition-colors duration-300">1cebrg</a>
-                    <a href="https://www.cosmic-deals.com" target="_blank"
-                        class="nav-item ui-font hover:text-terracotta transition-colors duration-300">Cosmic Deals</a>
-                    <a href="https://www.spiritlink.space/" target="_blank"
-                        class="nav-item ui-font hover:text-terracotta transition-colors duration-300">SpiritLink</a>
-                    <a href="https://research-sci.com/" target="_blank"
-                        class="nav-item ui-font hover:text-terracotta transition-colors duration-300">SCI Research</a>
-                    <a href="https://www.linkedin.com/in/jack-danger" target="_blank"
-                        class="nav-item ui-font hover:text-terracotta transition-colors duration-300">LinkedIn</a>
+        <footer class="station-footer mt-24 pt-12 border-t border-ochre text-center text-gray-500">
+            <div class="max-w-4xl mx-auto px-4 mb-20">
+                <h3 class="mono-font text-sm uppercase tracking-widest mb-8 text-terracotta">// PRIMARY ASSIGNMENT</h3>
+                <div class="pedestal-card border-terracotta shadow-lg transform scale-105">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div>
+                            <div class="pedestal-title text-xl mb-2">Praxis Research & Engineering</div>
+                            <p class="pedestal-desc max-w-2xl">Currently operating as lead systems architect for
+                                autonomous model orchestration and advanced engineering protocols. Praxis represents the
+                                core technical mission.</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <button onclick="updateProbe('https://www.praxislabs.technology', 'Praxis Research')"
+                                class="transmit-btn border-terracotta">TRANSMIT TO PROBE</button>
+                            <a href="https://www.praxislabs.technology" target="_blank" class="pedestal-arrow">↗</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Animated Email Button -->
-            <div class="flex justify-center mb-6">
-                <button id="email-button" class="email-button relative group">
-                    <div class="email-icon-container">
-                        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                            </path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
+            <h3 class="mono-font text-sm uppercase tracking-widest mb-12">Affiliated Research Nodes</h3>
+
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="pedestal-grid">
+                    <!-- Global Citizens Engineers -->
+                    <div class="pedestal-card">
+                        <div class="pedestal-title">Global Citizens Engineers</div>
+                        <div class="pedestal-desc">
+                            <p class="mb-3">A massive, decentralized network empowering small businesses to flip the
+                                script on corporate dominance. We provide the infrastructure for collective regulation
+                                and valid engineering.</p>
+                            <ul class="styled-list">
+                                <li><strong>Collective Regulation</strong>: Uniting independent entities to enforce fair
+                                    systemic structures.</li>
+                                <li><strong>Linguistic Clarity</strong>: Deconstructing legal and contractual leverage
+                                    to arm the engineer with understanding.</li>
+                                <li><strong>Sustainable Infrastructure</strong>: Open-source hardware and real-world
+                                    engineering solutions, not just code.</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center mt-auto">
+                            <button
+                                onclick="updateProbe('https://globalcitizensengineers.com', 'Global Citizens Engineers')"
+                                class="transmit-btn">TRANSMIT TO PROBE</button>
+                            <a href="https://globalcitizensengineers.com" target="_blank" class="pedestal-arrow">↗</a>
+                        </div>
                     </div>
-                    <span class="email-text">signal@jackdanger.dev</span>
+
+                    <!-- 1cebrg -->
+                    <div class="pedestal-card">
+                        <div class="pedestal-title">1cebrg</div>
+                        <div class="pedestal-desc">
+                            <p class="mb-3">An agentic swarm designed for high-fidelity truth verification. We
+                                synthesize physiological data with recursive debate to establish a trustworthy consensus
+                                mechanism.</p>
+                            <ul class="styled-list">
+                                <li><strong>Recursive Debate</strong>: Autonomous agents engaging in parallel
+                                    argumentation to distill fact from noise.</li>
+                                <li><strong>Physiological Synthesis</strong>: Integrating biological markers into the
+                                    truth-verification process.</li>
+                                <li><strong>Decentralized Consensus</strong>: A multi-agent framework that eliminates
+                                    single points of failure in information validation.</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center mt-auto">
+                            <button onclick="updateProbe('https://1cebrg.com/app', '1cebrg')"
+                                class="transmit-btn">TRANSMIT
+                                TO PROBE</button>
+                            <a href="https://1cebrg.com/app" target="_blank" class="pedestal-arrow">↗</a>
+                        </div>
+                    </div>
+
+                    <!-- Katanx -->
+                    <div class="pedestal-card">
+                        <div class="pedestal-title">Katanx</div>
+                        <div class="pedestal-desc">
+                            <p class="mb-3">The social platform for practitioners, not consumers. We filter out the
+                                noise of engagement farming to focus purely on mastery, execution, and real-world
+                                progression.</p>
+                            <ul class="styled-list">
+                                <li><strong>The Nine Arts</strong>: A comprehensive framework for human development,
+                                    spanning martial, visual, and intellectual disciplines.</li>
+                                <li><strong>Zero-Noise Signal</strong>: Validated communities where only verifiable
+                                    progress counts.</li>
+                                <li><strong>Thesidia Intelligence</strong>: Advanced pattern recognition identifying
+                                    structural similarities across diverse fields of study.</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center mt-auto">
+                            <button onclick="updateProbe('https://katanx.com/', 'Katanx')" class="transmit-btn">TRANSMIT
+                                TO PROBE</button>
+                            <a href="https://katanx.com/" target="_blank" class="pedestal-arrow">↗</a>
+                        </div>
+                    </div>
+
+                    <!-- SpiritLink -->
+                    <div class="pedestal-card">
+                        <div class="pedestal-title">SpiritLink</div>
+                        <div class="pedestal-desc">
+                            <p class="mb-3">A research platform bridging the gap between somatic experience and digital
+                                interface. We engineer protocols that synchronize human consciousness with computational
+                                systems.</p>
+                            <ul class="styled-list">
+                                <li><strong>Quantum RAG</strong>: Emergence detection algorithms tuned for non-linear,
+                                    consciousness-focused data retrieval.</li>
+                                <li><strong>Somatic Engineering</strong>: Translating ancient movement arts into digital
+                                    signal processing.</li>
+                                <li><strong>Bio-Sync</strong>: Aligning user interface latency and feedback loops with
+                                    organic neurological states.</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center mt-auto">
+                            <button onclick="updateProbe('https://www.spiritlink.space/', 'SpiritLink')"
+                                class="transmit-btn">TRANSMIT TO PROBE</button>
+                            <a href="https://www.spiritlink.space/" target="_blank" class="pedestal-arrow">↗</a>
+                        </div>
+                    </div>
+
+                    <!-- Cosmic Deals -->
+                    <div class="pedestal-card">
+                        <div class="pedestal-title">Cosmic Deals</div>
+                        <div class="pedestal-desc">
+                            <p class="mb-3">A sovereign, one-person commerce vessel delivering curated vintage finds and
+                                art through a zodiac-aligned interface. No corporate filler, just a direct line to the
+                                owner's collection.</p>
+                            <ul class="styled-list">
+                                <li><strong>Zodiac-Driven Commerce</strong>: User experience tailored by astrological
+                                    alignment, not algorithmic manipulation.</li>
+                                <li><strong>Star Dust Loyalty</strong>: A galaxy-themed reward system converting
+                                    engagement into tangible value.</li>
+                                <li><strong>Sovereign Command</strong>: A bootstrap operation verifying that
+                                    small-scale, high-intent commerce can outmaneuver mass-market noise.</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center mt-auto">
+                            <button onclick="updateProbe('https://www.cosmic-deals.com', 'Cosmic Deals')"
+                                class="transmit-btn">TRANSMIT TO PROBE</button>
+                            <a href="https://www.cosmic-deals.com" target="_blank" class="pedestal-arrow">↗</a>
+                        </div>
+                    </div>
+
+                    <!-- SCI Research -->
+                    <div class="pedestal-card">
+                        <div class="pedestal-title">SCI Research</div>
+                        <div class="pedestal-desc">
+                            <p class="mb-3">A multidisciplinary research institute architecting the future of
+                                foundational intelligence. We prioritize structural integrity and geometric consistency
+                                over generative approximation.</p>
+                            <ul class="styled-list">
+                                <li><strong>Geometric Coherence</strong>: Moving beyond probabilistic generation to
+                                    establish crystalline, verifiable logic.</li>
+                                <li><strong>Symbolic Network</strong>: Visualizing complex data flows to reveal the
+                                    underlying architecture of information.</li>
+                                <li><strong>Crystal Growth</strong>: A methodological approach to AI that mimics
+                                    organic, structural development.</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-between items-center mt-auto">
+                            <button onclick="updateProbe('https://research-sci.com/', 'SCI Research')"
+                                class="transmit-btn">TRANSMIT TO PROBE</button>
+                            <a href="https://research-sci.com/" target="_blank" class="pedestal-arrow">↗</a>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn -->
+                    <div class="pedestal-card">
+                        <div class="pedestal-title">LinkedIn Context</div>
+                        <div class="pedestal-desc">Professional network and operational history in AI systems and human
+                            performance.</div>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="https://www.linkedin.com/in/jack-danger" target="_blank"
+                                class="transmit-btn flex items-center justify-center">VIEW PROFILE</a>
+                            <a href="https://www.linkedin.com/in/jack-danger" target="_blank"
+                                class="pedestal-arrow">↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Animated Email Button -->
+    <div class="flex justify-center mb-6">
+        <button id="email-button" class="email-button relative group">
+            <div class="email-icon-container">
+                <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                    </path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+            <span class="email-text">signal@jackdanger.dev</span>
+        </button>
+    </div>
+
+
+
+    <p class="mono-font text-xs opacity-50">&copy; 2025 // ORBITAL FIELD STATION</p>
+    </footer>
+
+
+
+    <!-- Email Log Modal -->
+    <div id="email-modal"
+        class="email-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="email-modal-content bg-sandstone rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="mono-font text-lg text-gray-800">// SIGNAL TRANSMISSION LOG //</h3>
+                <button id="close-email-modal" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
             </div>
-
-
-
-            <p class="mono-font text-xs opacity-50">&copy; 2025 // ORBITAL FIELD STATION</p>
-        </footer>
-
-
-
-        <!-- Email Log Modal -->
-        <div id="email-modal"
-            class="email-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-            <div
-                class="email-modal-content bg-sandstone rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="mono-font text-lg text-gray-800">// SIGNAL TRANSMISSION LOG //</h3>
-                    <button id="close-email-modal" class="text-gray-500 hover:text-gray-700 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            <div class="email-log-content">
+                <div class="mb-4">
+                    <p class="mono-font text-sm text-gray-600 mb-2">[TRANSMISSION PROTOCOL INITIATED]</p>
+                    <p class="text-gray-800 mb-4">Establishing secure connection to signal@jackdanger.dev...</p>
+                </div>
+                <div class="mb-4">
+                    <p class="mono-font text-sm text-gray-600 mb-2">[ENCRYPTION STATUS]</p>
+                    <p class="text-gray-800 mb-4">✓ End-to-end encryption enabled</p>
+                </div>
+                <div class="mb-4">
+                    <p class="mono-font text-sm text-gray-600 mb-2">[TRANSMISSION READY]</p>
+                    <p class="text-gray-800 mb-4">Ready to receive your message. All transmissions are logged and
+                        encrypted.</p>
+                </div>
+                <div class="mb-4">
+                    <p class="mono-font text-sm text-gray-600 mb-2">[CONTACT PROTOCOLS]</p>
+                    <ul class="text-gray-800 space-y-1">
+                        <li>• Research collaboration inquiries</li>
+                        <li>• Technical consultation requests</li>
+                        <li>• Project partnership opportunities</li>
+                        <li>• Field station access protocols</li>
+                    </ul>
+                </div>
+                <div class="mt-6 pt-4 border-t border-ochre">
+                    <a href="mailto:signal@jackdanger.dev"
+                        class="inline-flex items-center px-4 py-2 bg-terracotta text-white rounded-md hover:bg-terracotta-dark transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
+                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
-                    </button>
-                </div>
-                <div class="email-log-content">
-                    <div class="mb-4">
-                        <p class="mono-font text-sm text-gray-600 mb-2">[TRANSMISSION PROTOCOL INITIATED]</p>
-                        <p class="text-gray-800 mb-4">Establishing secure connection to signal@jackdanger.dev...</p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="mono-font text-sm text-gray-600 mb-2">[ENCRYPTION STATUS]</p>
-                        <p class="text-gray-800 mb-4">✓ End-to-end encryption enabled</p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="mono-font text-sm text-gray-600 mb-2">[TRANSMISSION READY]</p>
-                        <p class="text-gray-800 mb-4">Ready to receive your message. All transmissions are logged and
-                            encrypted.</p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="mono-font text-sm text-gray-600 mb-2">[CONTACT PROTOCOLS]</p>
-                        <ul class="text-gray-800 space-y-1">
-                            <li>• Research collaboration inquiries</li>
-                            <li>• Technical consultation requests</li>
-                            <li>• Project partnership opportunities</li>
-                            <li>• Field station access protocols</li>
-                        </ul>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-ochre">
-                        <a href="mailto:signal@jackdanger.dev"
-                            class="inline-flex items-center px-4 py-2 bg-terracotta text-white rounded-md hover:bg-terracotta-dark transition-colors duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            Open Email Client
-                        </a>
-                    </div>
+                        Open Email Client
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 
@@ -2787,6 +3152,34 @@
         }
 
 
+
+        // --- Interactive Probe Logic ---
+        function updateProbe(url, name) {
+            const iframe = document.getElementById('probe-iframe');
+            const probeSection = document.getElementById('mobile-probe');
+            const buttons = document.querySelectorAll('.probe-control-btn');
+
+            // Update iframe
+            if (iframe) iframe.src = url;
+
+            // Update button states
+            buttons.forEach(btn => {
+                if (btn.dataset.url === url) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            // Smooth scroll to probe
+            if (probeSection) probeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Visual pulse effect on frame
+            const frame = document.querySelector('.iphone-frame');
+            if (frame) {
+                frame.style.boxShadow = '0 0 50px var(--terracotta)';
+                setTimeout(() => {
+                    frame.style.boxShadow = '0 50px 100px -20px rgba(0, 0, 0, 0.3)';
+                }, 500);
+            }
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             try {
