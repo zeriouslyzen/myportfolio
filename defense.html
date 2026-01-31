@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Defense | Jack Danger</title>
+
+    <!-- SEO Meta -->
+    <meta name="description"
+        content="Research Defense - Legal intelligence, document forensics, and advanced pattern detection. We find what others miss.">
+    <meta name="keywords"
+        content="legal research, document forensics, contradiction detection, evidence analysis, litigation support">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #000000;
+            --dark: #0a0a0a;
+            --charcoal: #141414;
+            --gray-dark: #1a1a1a;
+            --gray-mid: #666666;
+            --gray-light: #999999;
+            --white: #ffffff;
+            --gold: #c9a962;
+            --gold-dim: rgba(201, 169, 98, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            transition: background 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Satellite imagery background */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 70% 30%, rgba(30, 40, 50, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(20, 30, 40, 0.3) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        /* Animated scan line effect */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+            opacity: 0.5;
+            animation: scan 8s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes scan {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.3s forwards;
+        }
+
+        .hero .tagline {
+            font-size: 18px;
+            color: var(--gray-light);
+            margin-bottom: 48px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.5s forwards;
+        }
+
+        .tagline-stack {
+            margin-bottom: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 160px;
+        }
+
+        .tagline-line {
+            font-size: 20px;
+            color: var(--gray-light);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid transparent;
+            width: 0;
+        }
+
+        .tagline-line:nth-child(1) {
+            animation: typewriter 1.5s steps(25) 0.5s forwards, cursor 0.5s step-end 0.5s 3;
+        }
+
+        .tagline-line:nth-child(2) {
+            animation: typewriter 1s steps(20) 2.2s forwards, cursor 0.5s step-end 2.2s 2;
+        }
+
+        .tagline-line:nth-child(3) {
+            animation: typewriter 2s steps(45) 3.5s forwards, cursor 0.5s step-end 3.5s 4;
+        }
+
+        .tagline-line:nth-child(4) {
+            animation: typewriter 1.2s steps(25) 5.8s forwards, cursorPersist 0.6s step-end 5.8s infinite;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes cursor {
+            50% {
+                border-color: var(--white);
+            }
+        }
+
+        @keyframes cursorPersist {
+            50% {
+                border-color: var(--gold);
+            }
+        }
+
+        .tagline-line.accent {
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 22px;
+        }
+
+        .tagline-line.dim {
+            color: var(--gray-mid);
+            font-style: italic;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            border: 1px solid var(--white);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.7s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--black);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            opacity: 0;
+            animation: fadeUp 1s ease 1s forwards;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--gray-mid), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scaleY(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scaleY(1.1);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 48px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray-dark), transparent);
+            margin: 0 auto;
+        }
+
+        /* What We Do Section */
+        .services {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .section-header {
+            position: sticky;
+            top: 120px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .section-header p {
+            color: var(--gray-light);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .service-item {
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--gray-dark);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-item h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .service-item:hover h3 {
+            color: var(--gold);
+        }
+
+        .service-item p {
+            color: var(--gray-light);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* How We Work */
+        .process {
+            background: var(--dark);
+            padding: 120px 48px;
+            margin: 0 -48px;
+        }
+
+        .process-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 40px 24px;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -24px;
+            width: 48px;
+            height: 1px;
+            background: var(--gray-dark);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .process-step h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .process-step p {
+            color: var(--gray-light);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Case Studies */
+        .cases h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .cases>p {
+            color: var(--gray-light);
+            font-size: 15px;
+            margin-bottom: 80px;
+            max-width: 600px;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .case-card {
+            background: var(--charcoal);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gold);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .case-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .case-label {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .case-card h3 {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .case-card p {
+            color: var(--gray-light);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .case-result {
+            font-size: 13px;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .case-result span {
+            color: var(--gold);
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 160px 48px;
+            position: relative;
+        }
+
+        .contact h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .contact p {
+            color: var(--gray-light);
+            font-size: 16px;
+            margin-bottom: 48px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px;
+            border-top: 1px solid var(--gray-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--gray-mid);
+        }
+
+        footer a {
+            color: var(--gray-mid);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .section-header {
+                position: static;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 24px;
+            }
+
+            section {
+                padding: 80px 24px;
+            }
+
+            .process {
+                padding: 80px 24px;
+                margin: 0 -24px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="https://jackdanger.dev" class="logo">Jack Danger</a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#cases">Cases</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="scan-line"></div>
+        <div class="grid-overlay"></div>
+
+        <div class="hero-content">
+            <h1 class="serif">Research Defense</h1>
+            <div class="tagline-stack">
+                <p class="tagline-line">Everyone makes mistakes.</p>
+                <p class="tagline-line accent">Some make patterns.</p>
+                <p class="tagline-line">We find the things people 'forgot' to mention.</p>
+                <p class="tagline-line dim">The devil's in the data.</p>
+            </div>
+            <a href="#contact" class="cta-button">Schedule Briefing</a>
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- What We Do -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2 class="serif">What We Do</h2>
+            <p>The devil's in the data. We deploy multi-agent intelligence systems to surface contradictions, validate
+                evidence, and expose patterns hidden in complex document landscapes.</p>
+        </div>
+
+        <div class="service-list">
+            <div class="service-item">
+                <h3>Contradiction Detection</h3>
+                <p>Our systems analyze thousands of pages simultaneously, cross-referencing statements, dates, and
+                    claims across depositions, filings, and discovery materials. We find the inconsistencies that manual
+                    review misses.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Cross-Domain Synthesis</h3>
+                <p>Legal disputes don't exist in isolation. We connect financial records, technical specifications,
+                    communications, and public data to reveal relationships and patterns that illuminate the full
+                    picture.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Evidence Validation</h3>
+                <p>Every claim needs verification. We trace provenance, authenticate sources, assess reliability scores,
+                    and identify potential fabrications or manipulations in submitted materials.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Pattern Recognition</h3>
+                <p>Everyone makes mistakes. Some make patterns. We identify behavioral signatures, communication trends,
+                    and operational patterns that reveal intent and methodology.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Asset Protection</h3>
+                <p>Your assets have a story. Sometimes others want to rewrite it. We examine ownership trails, transfer
+                    histories, and exposure vectors to identify vulnerabilities before someone else does.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Wealth Defense</h3>
+                <p>Money moves. So do the people watching it. We assess financial exposure, trace unauthorized interest,
+                    and build intelligence profiles on parties who have too many questions about your portfolio.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Surveillance Security</h3>
+                <p>Not everyone watching has good intentions. We detect surveillance signatures, identify monitoring
+                    patterns, and assess whether the attention you're receiving is warranted—or weaponized.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Interference Detection</h3>
+                <p>Outside influence leaves fingerprints. We identify coordinated interference, trace manipulation
+                    campaigns, and expose the actors who'd prefer to operate in the shadows.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Drone Surveillance</h3>
+                <p>Eyes in the sky that never blink. Our autonomous aerial systems provide real-time monitoring,
+                    discreet following capabilities, and immediate law enforcement coordination when situations
+                    escalate. Protection for you and the people you care about—from a vantage point they won't expect.
+                </p>
+            </div>
+
+            <div class="service-item">
+                <h3>Elite Security Personnel</h3>
+                <p>The best defense is someone who's already three steps ahead. Our security professionals are trained
+                    by elite performance coaches in advanced threat assessment, situational awareness, and modern
+                    defensive tactics. Not bodyguards—strategists who happen to be exceptionally hard to get past.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- How We Work -->
+    <div class="process" id="process">
+        <div class="process-inner">
+            <h2 class="serif">How We Work</h2>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01 — INTAKE</div>
+                    <h3>Document Ingestion</h3>
+                    <p>Secure transfer of all relevant materials. We accept any format—PDFs, emails, databases, images,
+                        audio transcripts.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">02 — ANALYSIS</div>
+                    <h3>Multi-Agent Processing</h3>
+                    <p>Our systems deploy specialized analytical agents that examine materials from multiple
+                        perspectives simultaneously.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">03 — SYNTHESIS</div>
+                    <h3>Pattern Mapping</h3>
+                    <p>Findings are cross-referenced and synthesized into actionable intelligence with confidence
+                        ratings and evidence chains.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">04 — DELIVERY</div>
+                    <h3>Secure Briefing</h3>
+                    <p>Comprehensive report with findings, supporting evidence, and strategic recommendations delivered
+                        via encrypted channels.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Case Examples -->
+    <section id="cases" class="cases">
+        <h2 class="serif">Case Examples</h2>
+        <p>Representative scenarios demonstrating our analytical capabilities. All details anonymized and abstracted to
+            protect client confidentiality.</p>
+
+        <div class="case-grid">
+            <div class="case-card">
+                <div class="case-label">Contradiction Analysis</div>
+                <h3>Timeline Reconstruction in Corporate Fraud Case</h3>
+                <p>Opposing counsel claimed their client had no knowledge of financial irregularities until Q4 2023. Our
+                    analysis of 47,000 internal emails revealed 23 instances of explicit discussion dating to Q1
+                    2022—contradicting sworn testimony.</p>
+                <div class="case-result">Result: <span>Settlement negotiations reopened</span></div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-label">Cross-Domain Synthesis</div>
+                <h3>Patent Infringement Evidence Chain</h3>
+                <p>A technology firm denied access to competitor trade secrets. By correlating travel records,
+                    conference attendance, and subsequent feature releases, we established a compelling timeline of
+                    exposure preceding implementation.</p>
+                <div class="case-result">Result: <span>Key evidence admitted at trial</span></div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-label">Evidence Validation</div>
+                <h3>Document Authenticity Challenge</h3>
+                <p>Critical contract submitted as evidence showed metadata inconsistencies and typographical patterns
+                    suggesting post-hoc modification. Our forensic analysis identified artifacts consistent with
+                    alteration tools.</p>
+                <div class="case-result">Result: <span>Motion to exclude granted</span></div>
+            </div>
+
+            <div class="case-card">
+                <div class="case-label">Pattern Recognition</div>
+                <h3>Regulatory Compliance Investigation</h3>
+                <p>What appeared as isolated compliance failures became systemic when our analysis revealed matching
+                    temporal patterns—violations clustered around specific reporting periods across multiple entities.
+                </p>
+                <div class="case-result">Result: <span>Investigation scope expanded</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2 class="serif">Ready to see what you're missing?</h2>
+        <p>Schedule a confidential briefing to discuss your case and explore how Research Defense can support your legal
+            strategy.</p>
+        <a href="mailto:signal@jackdanger.dev" class="cta-button">Schedule Briefing</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <span>© 2026 Jack Danger. All rights reserved.</span>
+        </div>
+        <div>
+            <a href="https://jackdanger.dev">jackdanger.dev</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate elements on scroll
+        document.querySelectorAll('.service-item, .process-step, .case-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Stagger animation for grid items
+        document.querySelectorAll('.case-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.process-step').forEach((step, index) => {
+            step.style.transitionDelay = `${index * 0.15}s`;
+        });
+    </script>
+</body>
+
+</html>
